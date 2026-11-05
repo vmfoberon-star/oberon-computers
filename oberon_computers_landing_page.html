@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="ru" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oberon Computers Ltd — Компьютерный сервис и магазин в Иерусалиме</title>
+    <meta name="description" content="Профессиональный ремонт ПК, сборка кастомных компьютеров, продажа комплектующих и IT-поддержка в Иерусалиме. Улица Лейб Яффе 47.">
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            400: '#38bdf8',
+                            500: '#0ea5e9',
+                            600: '#0284c7',
+                            700: '#0369a1',
+                            900: '#0c4a6e',
+                        },
+                        dark: {
+                            bg: '#0a0f1d',
+                            card: '#111827',
+                            border: '#1f2937'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Google Fonts & Font Awesome Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #080c14;
+            color: #f3f4f6;
+        }
+        .glow-effect {
+            box-shadow: 0 0 25px rgba(14, 165, 233, 0.25);
+        }
+        .glow-effect-lg {
+            box-shadow: 0 0 50px rgba(14, 165, 233, 0.35);
+        }
+        .glass-card {
+            background: rgba(17, 24, 39, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .gradient-text {
+            background: linear-gradient(135deg, #38bdf8 0%, #818cf8 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-brand-500 selection:text-white flex flex-col min-h-screen">
+
+    <!-- HEADER / NAVIGATION -->
+    <header class="fixed top-0 left-0 right-0 z-50 glass-card transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- Logo -->
+                <a href="#" class="flex items-center space-x-3 group">
+                    <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-600 to-indigo-500 flex items-center justify-center text-white font-bold text-xl shadow-lg group-hover:scale-105 transition-transform">
+                        <i class="fa-solid fa-microchip"></i>
+                    </div>
+                    <div>
+                        <span class="text-xl font-extrabold tracking-wider text-white block leading-none">OBERON</span>
+                        <span class="text-xs text-brand-400 font-medium tracking-widest uppercase">Computers Ltd</span>
+                    </div>
+                </a>
+
+                <!-- Desktop Navigation Links -->
+                <nav class="hidden md:flex space-x-8 text-sm font-medium">
+                    <a href="#services" class="text-gray-300 hover:text-brand-400 transition-colors">Услуги</a>
+                    <a href="#about" class="text-gray-300 hover:text-brand-400 transition-colors">О нас</a>
+                    <a href="#calculator" class="text-gray-300 hover:text-brand-400 transition-colors">Расчет стоимости</a>
+                    <a href="#reviews" class="text-gray-300 hover:text-brand-400 transition-colors">Отзывы</a>
+                    <a href="#contacts" class="text-gray-300 hover:text-brand-400 transition-colors">Контакты</a>
+                </nav>
+
+                <!-- Action Buttons -->
+                <div class="hidden md:flex items-center space-x-4">
+                    <a href="tel:026714089" class="flex items-center space-x-2 text-sm text-gray-300 hover:text-white font-medium px-3 py-2">
+                        <i class="fa-solid fa-phone text-brand-400"></i>
+                        <span>02-671-4089</span>
+                    </a>
+                    <a href="https://wa.me/97226714089" target="_blank" rel="noopener noreferrer" class="bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-600 hover:to-teal-700 text-white px-4 py-2.5 rounded-xl font-medium text-sm flex items-center space-x-2 shadow-lg shadow-emerald-500/20 transition-all transform hover:-translate-y-0.5">
+                        <i class="fa-brands fa-whatsapp text-lg"></i>
+                        <span>WhatsApp</span>
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-btn" type="button" class="md:hidden text-gray-400 hover:text-white focus:outline-none p-2 rounded-lg">
+                    <i class="fa-solid fa-bars text-2xl"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobile-menu" class="hidden md:hidden glass-card border-t border-gray-800 px-4 pt-3 pb-6 space-y-3">
+            <a href="#services" class="block text-gray-300 hover:text-brand-400 py-2 text-base font-medium">Услуги</a>
+            <a href="#about" class="block text-gray-300 hover:text-brand-400 py-2 text-base font-medium">О нас</a>
+            <a href="#calculator" class="block text-gray-300 hover:text-brand-400 py-2 text-base font-medium">Расчет стоимости</a>
+            <a href="#reviews" class="block text-gray-300 hover:text-brand-400 py-2 text-base font-medium">Отзывы</a>
+            <a href="#contacts" class="block text-gray-300 hover:text-brand-400 py-2 text-base font-medium">Контакты</a>
+            <div class="pt-4 border-t border-gray-800 flex flex-col space-y-3">
+                <a href="tel:026714089" class="w-full bg-gray-800 text-white text-center py-2.5 rounded-xl font-medium flex items-center justify-center space-x-2">
+                    <i class="fa-solid fa-phone text-brand-400"></i>
+                    <span>Позвонить: 02-671-4089</span>
+                </a>
+                <a href="https://wa.me/97226714089" target="_blank" rel="noopener noreferrer" class="w-full bg-emerald-600 text-white text-center py-2.5 rounded-xl font-medium flex items-center justify-center space-x-2">
+                    <i class="fa-brands fa-whatsapp text-lg"></i>
+                    <span>Написать в WhatsApp</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="relative pt-32 pb-20 md:pt-44 md:pb-32 overflow-hidden">
+        <!-- Background Glow Orbs -->
+        <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-brand-500/10 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="absolute top-1/3 right-10 w-80 h-80 bg-indigo-500/10 rounded-full blur-3xl pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- Left Text Content -->
+                <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+                    <!-- Rating Badge -->
+                    <div class="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-brand-900/40 border border-brand-500/30 text-brand-300 text-sm">
+                        <div class="flex text-amber-400 text-xs">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                        <span class="font-semibold text-white">5.0</span>
+                        <span class="text-gray-400">| Google Отзывы в Иерусалиме</span>
+                    </div>
+
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-tight">
+                        Экспертный ремонт и сборка <span class="gradient-text">компьютеров</span>
+                    </h1>
+
+                    <p class="text-lg sm:text-xl text-gray-300 max-w-2xl mx-auto lg:mx-0 font-normal leading-relaxed">
+                        Быстрая диагностика, профессиональный ремонт, сборка мощных игровых и рабочих ПК, замена комплектующих и IT-обслуживание в Иерусалиме.
+                    </p>
+
+                    <!-- Features Pills -->
+                    <div class="flex flex-wrap justify-center lg:justify-start gap-4 text-sm text-gray-300 font-medium pt-2">
+                        <div class="flex items-center space-x-2 bg-gray-800/60 px-3.5 py-2 rounded-lg border border-gray-700/50">
+                            <i class="fa-solid fa-bolt text-amber-400"></i>
+                            <span>Быстрая диагностика</span>
+                        </div>
+                        <div class="flex items-center space-x-2 bg-gray-800/60 px-3.5 py-2 rounded-lg border border-gray-700/50">
+                            <i class="fa-solid fa-shield-halved text-emerald-400"></i>
+                            <span>Гарантия на работу</span>
+                        </div>
+                        <div class="flex items-center space-x-2 bg-gray-800/60 px-3.5 py-2 rounded-lg border border-gray-700/50">
+                            <i class="fa-solid fa-location-dot text-brand-400"></i>
+                            <span>Ул. Лейб Яффе 47</span>
+                        </div>
+                    </div>
+
+                    <!-- Hero Call to Action Buttons -->
+                    <div class="pt-4 flex flex-col sm:flex-row items-center justify-center lg:justify-start space-y-4 sm:space-y-0 sm:space-x-4">
+                        <a href="#contacts" class="w-full sm:w-auto px-8 py-4 rounded-xl bg-gradient-to-r from-brand-500 to-brand-600 hover:from-brand-600 hover:to-brand-700 text-white font-semibold text-base shadow-lg shadow-brand-500/25 transition-all text-center">
+                            Записаться на ремонт
+                        </a>
+                        <a href="https://wa.me/97226714089" target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto px-8 py-4 rounded-xl bg-gray-800 hover:bg-gray-700 text-white font-semibold text-base border border-gray-700 transition-all text-center flex items-center justify-center space-x-2">
+                            <i class="fa-brands fa-whatsapp text-emerald-400 text-xl"></i>
+                            <span>Консультация в WA</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Right Visual Element / Glass Card -->
+                <div class="lg:col-span-5">
+                    <div class="relative mx-auto max-w-md lg:max-w-none">
+                        <div class="absolute -inset-1 rounded-3xl bg-gradient-to-r from-brand-500 to-indigo-500 opacity-30 blur-xl"></div>
+                        <div class="relative glass-card rounded-3xl p-8 border border-gray-700/50 space-y-6">
+                            <div class="flex items-center justify-between pb-6 border-b border-gray-800">
+                                <div>
+                                    <h3 class="text-xl font-bold text-white">Oberon Computers</h3>
+                                    <p class="text-sm text-gray-400">Компьютерный магазин и сервис</p>
+                                </div>
+                                <span class="px-3 py-1 rounded-full text-xs font-semibold bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">
+                                    Открыто сегодня
+                                </span>
+                            </div>
+
+                            <!-- Quick Stats / Highlights -->
+                            <div class="space-y-4">
+                                <div class="flex items-center justify-between p-3.5 rounded-xl bg-gray-800/40 border border-gray-800">
+                                    <div class="flex items-center space-x-3">
+                                        <div class="w-9 h-9 rounded-lg bg-brand-500/20 text-brand-400 flex items-center justify-center">
+                                            <i class="fa-solid fa-wrench"></i>
+                                        </div>
+                                        <div>
+                                            <p class="text-sm font-medium text-white">Ремонт любой сложности</p>
+                                            <p class="text-xs text-gray-400">ПК, ноутбуки, моноблоки</p>
+                                        </div>
+                                    </div>
+                                    <i class="fa-solid fa-chevron-right text-xs text-gray-500"></i>
+                                </div>
+
+                                <div class="flex items-center justify-between p-3.5 rounded-xl bg-gray-800/40 border border-gray-800">
+                                    <div class="flex items-center space-x-3">
+                                        <div class="w-9 h-9 rounded-lg bg-indigo-500/20 text-indigo-400 flex items-center justify-center">
+                                            <i class="fa-solid fa-desktop"></i>
+                                        </div>
+                                        <div>
+                                            <p class="text-sm font-medium text-white">Кастомные ПК</p>
+                                            <p class="text-xs text-gray-400">Подбор конфигурации и сборка</p>
+                                        </div>
+                                    </div>
+                                    <i class="fa-solid fa-chevron-right text-xs text-gray-500"></i>
+                                </div>
+
+                                <div class="flex items-center justify-between p-3.5 rounded-xl bg-gray-800/40 border border-gray-800">
+                                    <div class="flex items-center space-x-3">
+                                        <div class="w-9 h-9 rounded-lg bg-emerald-500/20 text-emerald-400 flex items-center justify-center">
+                                            <i class="fa-solid fa-check"></i>
+                                        </div>
+                                        <div>
+                                            <p class="text-sm font-medium text-white">Официальные запчасти</p>
+                                            <p class="text-xs text-gray-400">Только проверенные бренды</p>
+                                        </div>
+                                    </div>
+                                    <i class="fa-solid fa-chevron-right text-xs text-gray-500"></i>
+                                </div>
+                            </div>
+
+                            <!-- Fast Action Call Out -->
+                            <div class="pt-2 text-center">
+                                <a href="tel:026714089" class="text-sm font-medium text-brand-400 hover:text-brand-300 transition-colors inline-flex items-center space-x-2">
+                                    <i class="fa-solid fa-headset"></i>
+                                    <span>Прямой звонок мастера: 02-671-4089</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICES SECTION -->
+    <section id="services" class="py-20 bg-dark-bg relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-xs font-bold text-brand-400 tracking-widest uppercase">Наши Услуги</h2>
+                <p class="mt-2 text-3xl sm:text-4xl font-extrabold text-white">Полный спектр компьютерной помощи</p>
+                <p class="mt-4 text-gray-400 text-lg">Решаем любые проблемы с техникой быстро, качественно и с гарантией.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                <!-- Service Card 1 -->
+                <div class="glass-card rounded-2xl p-8 hover:border-brand-500/50 transition-all duration-300 group hover:-translate-y-1">
+                    <div class="w-14 h-14 rounded-2xl bg-brand-500/10 border border-brand-500/20 text-brand-400 flex items-center justify-center text-2xl mb-6 group-hover:scale-110 group-hover:bg-brand-500 group-hover:text-white transition-all">
+                        <i class="fa-solid fa-laptop-medical"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Диагностика и Ремонт</h3>
+                    <p class="text-gray-400 leading-relaxed text-sm mb-4">
+                        Устранение аппаратных сбоев, чистка от пыли, замена термопасты, ремонт материнских плат, экранов ноутбуков и блоков питания.
+                    </p>
+                    <a href="#contacts" class="inline-flex items-center text-sm font-semibold text-brand-400 hover:text-brand-300">
+                        <span>Заказать диагностику</span>
+                        <i class="fa-solid fa-arrow-right ml-2 text-xs"></i>
+                    </a>
+                </div>
+
+                <!-- Service Card 2 -->
+                <div class="glass-card rounded-2xl p-8 hover:border-brand-500/50 transition-all duration-300 group hover:-translate-y-1">
+                    <div class="w-14 h-14 rounded-2xl bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 flex items-center justify-center text-2xl mb-6 group-hover:scale-110 group-hover:bg-indigo-500 group-hover:text-white transition-all">
+                        <i class="fa-solid fa-gamepad"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Сборка ПК на заказ</h3>
+                    <p class="text-gray-400 leading-relaxed text-sm mb-4">
+                        Индивидуальная подборка комплектующих под ваш бюджет. Игровые сборки, компьютеры для видеомонтажа, 3D-графики и работы.
+                    </p>
+                    <a href="#contacts" class="inline-flex items-center text-sm font-semibold text-brand-400 hover:text-brand-300">
+                        <span>Собрать компьютер</span>
+                        <i class="fa-solid fa-arrow-right ml-2 text-xs"></i>
+                    </a>
+                </div>
+
+                <!-- Service Card 3 -->
+                <div class="glass-card rounded-2xl p-8 hover:border-brand-500/50 transition-all duration-300 group hover:-translate-y-1">
+                    <div class="w-14 h-14 rounded-2xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 flex items-center justify-center text-2xl mb-6 group-hover:scale-110 group-hover:bg-emerald-500 group-hover:text-white transition-all">
+                        <i class="fa-solid fa-microchip"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Продажа и Модернизация</h3>
+                    <p class="text-gray-400 leading-relaxed text-sm mb-4">
+                        Апгрейд вашего старого ПК: установка скоростных SSD, добавление оперативной памяти, замена видеокарт и процессоров.
+                    </p>
+                    <a href="#contacts" class="inline-flex items-center text-sm font-semibold text-brand-400 hover:text-brand-300">
+                        <span>Улучшить ПК</span>
+                        <i class="fa-solid fa-arrow-right ml-2 text-xs"></i>
+                    </a>
+                </div>
+
+                <!-- Service Card 4 -->
+                <div class="glass-card rounded-2xl p-8 hover:border-brand-500/50 transition-all duration-300 group hover:-translate-y-1">
+                    <div class="w-14 h-14 rounded-2xl bg-amber-500/10 border border-amber-500/20 text-amber-400 flex items-center justify-center text-2xl mb-6 group-hover:scale-110 group-hover:bg-amber-500 group-hover:text-white transition-all">
+                        <i class="fa-solid fa-compact-disc"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">ПО и Чистка от Вирусов</h3>
+                    <p class="text-gray-400 leading-relaxed text-sm mb-4">
+                        Установка лицензионных ОС Windows/Linux, драйверов, антивирусов и специализированных программ. Удаление вредоносного ПО.
+                    </p>
+                    <a href="#contacts" class="inline-flex items-center text-sm font-semibold text-brand-400 hover:text-brand-300">
+                        <span>Установить ПО</span>
+                        <i class="fa-solid fa-arrow-right ml-2 text-xs"></i>
+                    </a>
+                </div>
+
+                <!-- Service Card 5 -->
+                <div class="glass-card rounded-2xl p-8 hover:border-brand-500/50 transition-all duration-300 group hover:-translate-y-1">
+                    <div class="w-14 h-14 rounded-2xl bg-purple-500/10 border border-purple-500/20 text-purple-400 flex items-center justify-center text-2xl mb-6 group-hover:scale-110 group-hover:bg-purple-500 group-hover:text-white transition-all">
+                        <i class="fa-solid fa-network-wired"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">IT-Support для Бизнеса</h3>
+                    <p class="text-gray-400 leading-relaxed text-sm mb-4">
+                        Обслуживание офисной техники, настройка локальных сетей, роутеров, серверов и резервного копирования данных в Иерусалиме.
+                    </p>
+                    <a href="#contacts" class="inline-flex items-center text-sm font-semibold text-brand-400 hover:text-brand-300">
+                        <span>Обслуживание офиса</span>
+                        <i class="fa-solid fa-arrow-right ml-2 text-xs"></i>
+                    </a>
+                </div>
+
+                <!-- Service Card 6 -->
+                <div class="glass-card rounded-2xl p-8 hover:border-brand-500/50 transition-all duration-300 group hover:-translate-y-1">
+                    <div class="w-14 h-14 rounded-2xl bg-rose-500/10 border border-rose-500/20 text-rose-400 flex items-center justify-center text-2xl mb-6 group-hover:scale-110 group-hover:bg-rose-500 group-hover:text-white transition-all">
+                        <i class="fa-solid fa-database"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Восстановление Данных</h3>
+                    <p class="text-gray-400 leading-relaxed text-sm mb-4">
+                        Восстановление удаленных или поврежденных файлов с жестких дисков (HDD), SSD, флешек и карт памяти.
+                    </p>
+                    <a href="#contacts" class="inline-flex items-center text-sm font-semibold text-brand-400 hover:text-brand-300">
+                        <span>Восстановить файлы</span>
+                        <i class="fa-solid fa-arrow-right ml-2 text-xs"></i>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- CALCULATOR SECTION -->
+    <section id="calculator" class="py-20 bg-gray-900/40 relative border-y border-gray-800">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-xs font-bold text-brand-400 tracking-widest uppercase">Интерактивный расчет</h2>
+                <p class="mt-2 text-3xl font-extrabold text-white">Быстрая оценка стоимости услуг</p>
+                <p class="mt-2 text-gray-400 text-sm">Выберите необходимые услуги для примерного расчета бюджета</p>
+            </div>
+
+            <div class="glass-card rounded-3xl p-6 sm:p-8 border border-gray-700/60 shadow-2xl">
+                <div class="space-y-4">
+                    <label class="flex items-center justify-between p-4 rounded-xl bg-gray-800/60 border border-gray-700 cursor-pointer hover:bg-gray-800 transition-colors">
+                        <div class="flex items-center space-x-3">
+                            <input type="checkbox" value="150" class="calc-option w-5 h-5 rounded text-brand-500 focus:ring-brand-400 bg-gray-900 border-gray-700">
+                            <span class="text-white font-medium text-sm sm:text-base">Комплексная диагностика оборудования</span>
+                        </div>
+                        <span class="text-brand-400 font-bold text-sm sm:text-base">~₪150</span>
+                    </label>
+
+                    <label class="flex items-center justify-between p-4 rounded-xl bg-gray-800/60 border border-gray-700 cursor-pointer hover:bg-gray-800 transition-colors">
+                        <div class="flex items-center space-x-3">
+                            <input type="checkbox" value="200" class="calc-option w-5 h-5 rounded text-brand-500 focus:ring-brand-400 bg-gray-900 border-gray-700">
+                            <span class="text-white font-medium text-sm sm:text-base">Профилактика: чистка от пыли и замена термопасты</span>
+                        </div>
+                        <span class="text-brand-400 font-bold text-sm sm:text-base">~₪200</span>
+                    </label>
+
+                    <label class="flex items-center justify-between p-4 rounded-xl bg-gray-800/60 border border-gray-700 cursor-pointer hover:bg-gray-800 transition-colors">
+                        <div class="flex items-center space-x-3">
+                            <input type="checkbox" value="250" class="calc-option w-5 h-5 rounded text-brand-500 focus:ring-brand-400 bg-gray-900 border-gray-700">
+                            <span class="text-white font-medium text-sm sm:text-base">Установка / переустановка Windows и драйверов</span>
+                        </div>
+                        <span class="text-brand-400 font-bold text-sm sm:text-base">~₪250</span>
+                    </label>
+
+                    <label class="flex items-center justify-between p-4 rounded-xl bg-gray-800/60 border border-gray-700 cursor-pointer hover:bg-gray-800 transition-colors">
+                        <div class="flex items-center space-x-3">
+                            <input type="checkbox" value="350" class="calc-option w-5 h-5 rounded text-brand-500 focus:ring-brand-400 bg-gray-900 border-gray-700">
+                            <span class="text-white font-medium text-sm sm:text-base">Сборка системного блока из комплектующих</span>
+                        </div>
+                        <span class="text-brand-400 font-bold text-sm sm:text-base">~₪350</span>
+                    </label>
+                </div>
+
+                <div class="mt-8 pt-6 border-t border-gray-800 flex flex-col sm:flex-row items-center justify-between gap-4">
+                    <div>
+                        <span class="text-gray-400 text-sm">Ориентировочная сумма:</span>
+                        <div class="text-3xl font-extrabold text-white"><span id="total-price">0</span> ₪</div>
+                    </div>
+                    <a href="https://wa.me/97226714089" target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto px-6 py-3.5 bg-emerald-600 hover:bg-emerald-500 text-white font-semibold rounded-xl flex items-center justify-center space-x-2 transition-all">
+                        <i class="fa-brands fa-whatsapp text-lg"></i>
+                        <span>Запросить точный расчет</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- REVIEWS SECTION -->
+    <section id="reviews" class="py-20 bg-dark-bg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <div class="inline-flex items-center space-x-1 text-amber-400 mb-2">
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                </div>
+                <h2 class="text-3xl font-extrabold text-white">Отзывы клиентов на Google</h2>
+                <p class="mt-2 text-gray-400">Наш рейтинг 5.0 на основе отзывов жителей Иерусалима</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Review 1 -->
+                <div class="glass-card rounded-2xl p-6 relative">
+                    <div class="flex items-center space-x-1 text-amber-400 text-xs mb-4">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="text-gray-300 text-sm leading-relaxed mb-6">
+                        «Прекрасный сервис! Быстро диагностировали проблему с ноутбуком, который не включался. Заменили деталь за один день по разумной цене. Очень рекомендую Oberon computers!»
+                    </p>
+                    <div class="flex items-center space-x-3 pt-4 border-t border-gray-800">
+                        <div class="w-9 h-9 rounded-full bg-brand-500/20 text-brand-400 font-bold flex items-center justify-center text-sm">
+                            A
+                        </div>
+                        <div>
+                            <p class="text-sm font-semibold text-white">Alex M.</p>
+                            <p class="text-xs text-gray-500">Google Review</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 2 -->
+                <div class="glass-card rounded-2xl p-6 relative">
+                    <div class="flex items-center space-x-1 text-amber-400 text-xs mb-4">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="text-gray-300 text-sm leading-relaxed mb-6">
+                        «Собрали мощный игровой компьютер для сына. Помогли выбрать комплектующие, сделали идеальный кабель-менеджмент. Все работает отлично и бесшумно!»
+                    </p>
+                    <div class="flex items-center space-x-3 pt-4 border-t border-gray-800">
+                        <div class="w-9 h-9 rounded-full bg-indigo-500/20 text-indigo-400 font-bold flex items-center justify-center text-sm">
+                            D
+                        </div>
+                        <div>
+                            <p class="text-sm font-semibold text-white">David K.</p>
+                            <p class="text-xs text-gray-500">Google Review</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 3 -->
+                <div class="glass-card rounded-2xl p-6 relative">
+                    <div class="flex items-center space-x-1 text-amber-400 text-xs mb-4">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="text-gray-300 text-sm leading-relaxed mb-6">
+                        «Честный и профессиональный мастер. Ускорили работу моего рабочего ПК, установив SSD. Теперь загружается за секунды. Огромное спасибо за оперативность.»
+                    </p>
+                    <div class="flex items-center space-x-3 pt-4 border-t border-gray-800">
+                        <div class="w-9 h-9 rounded-full bg-emerald-500/20 text-emerald-400 font-bold flex items-center justify-center text-sm">
+                            S
+                        </div>
+                        <div>
+                            <p class="text-sm font-semibold text-white">Sarah L.</p>
+                            <p class="text-xs text-gray-500">Google Review</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACTS & MAP SECTION -->
+    <section id="contacts" class="py-20 bg-gray-900/30 relative border-t border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+                
+                <!-- Contact Details & Form -->
+                <div class="lg:col-span-6 space-y-8">
+                    <div>
+                        <h2 class="text-xs font-bold text-brand-400 tracking-widest uppercase">Свяжитесь с нами</h2>
+                        <p class="mt-2 text-3xl font-extrabold text-white">Oberon Computers Ltd</p>
+                        <p class="mt-2 text-gray-400 text-base">Всегда рады помочь вам с техникой. Звоните или приходите в мастерскую!</p>
+                    </div>
+
+                    <div class="space-y-4">
+                        <div class="flex items-start space-x-4 p-4 rounded-xl bg-gray-800/40 border border-gray-800">
+                            <div class="w-10 h-10 rounded-lg bg-brand-500/20 text-brand-400 flex items-center justify-center shrink-0">
+                                <i class="fa-solid fa-location-dot text-lg"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-white font-semibold text-sm">Адрес мастерской</h4>
+                                <p class="text-gray-400 text-sm mt-0.5">Leib Yafe St 47, Jerusalem, 9339078</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start space-x-4 p-4 rounded-xl bg-gray-800/40 border border-gray-800">
+                            <div class="w-10 h-10 rounded-lg bg-brand-500/20 text-brand-400 flex items-center justify-center shrink-0">
+                                <i class="fa-solid fa-phone text-lg"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-white font-semibold text-sm">Телефон</h4>
+                                <a href="tel:026714089" class="text-brand-400 hover:underline text-sm font-medium mt-0.5 block">02-671-4089</a>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start space-x-4 p-4 rounded-xl bg-gray-800/40 border border-gray-800">
+                            <div class="w-10 h-10 rounded-lg bg-brand-500/20 text-brand-400 flex items-center justify-center shrink-0">
+                                <i class="fa-solid fa-clock text-lg"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-white font-semibold text-sm">Часы работы</h4>
+                                <p class="text-gray-400 text-sm mt-0.5">Воскресенье – Четверг: 09:00 – 18:00</p>
+                                <p class="text-gray-500 text-xs">Пятница и Суббота: Выходной</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Contact Form -->
+                    <form id="contact-form" class="glass-card p-6 rounded-2xl border border-gray-700 space-y-4">
+                        <h3 class="text-lg font-bold text-white mb-2">Оставить заявку на консультацию</h3>
+                        <div>
+                            <input type="text" id="client-name" required placeholder="Ваше имя" class="w-full bg-gray-900 border border-gray-700 rounded-xl px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-brand-500 text-sm">
+                        </div>
+                        <div>
+                            <input type="tel" id="client-phone" required placeholder="Номер телефона" class="w-full bg-gray-900 border border-gray-700 rounded-xl px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-brand-500 text-sm">
+                        </div>
+                        <div>
+                            <textarea id="client-message" rows="3" placeholder="Опишите проблему или необходимую услугу" class="w-full bg-gray-900 border border-gray-700 rounded-xl px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-brand-500 text-sm resize-none"></textarea>
+                        </div>
+                        <button type="submit" class="w-full py-3.5 bg-gradient-to-r from-brand-500 to-brand-600 hover:from-brand-600 hover:to-brand-700 text-white font-semibold rounded-xl text-sm transition-all shadow-lg shadow-brand-500/20">
+                            Отправить сообщение
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Google Map Embed -->
+                <div class="lg:col-span-6 h-full min-h-[400px] rounded-3xl overflow-hidden border border-gray-800 glass-card">
+                    <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3392.534882142279!2d35.2215!3d31.755!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzHCsDQ1JzE4LjAiTiAzNcKwMTMnMTcuNCJF!5e0!3m2!1sen!2sil!4v1620000000000!5m2!1sen!2sil" 
+                        width="100%" 
+                        height="100%" 
+                        style="border:0; min-height: 450px;" 
+                        allowfullscreen="" 
+                        loading="lazy"
+                        title="Oberon Computers Location">
+                    </iframe>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-black/80 border-t border-gray-800 py-8 text-center text-xs text-gray-500 mt-auto">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-3">
+            <p>© <span id="year"></span> Oberon computers Ltd. Все права защищены. Иерусалим, Израиль.</p>
+            <p class="text-gray-600">Компьютерный магазин и сервисный центр.</p>
+        </div>
+    </footer>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        // Set dynamic current year in footer
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Mobile Menu Toggle Logic
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Interactive Price Calculator Logic
+        const calcOptions = document.querySelectorAll('.calc-option');
+        const totalPriceEl = document.getElementById('total-price');
+
+        function updateCalculator() {
+            let total = 0;
+            calcOptions.forEach(opt => {
+                if (opt.checked) {
+                    total += parseInt(opt.value);
+                }
+            });
+            totalPriceEl.textContent = total;
+        }
+
+        calcOptions.forEach(opt => {
+            opt.addEventListener('change', updateCalculator);
+        });
+
+        // Contact Form Handler (Direct WhatsApp Redirect on Submit)
+        const contactForm = document.getElementById('contact-form');
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            const name = document.getElementById('client-name').value;
+            const phone = document.getElementById('client-phone').value;
+            const msg = document.getElementById('client-message').value;
+
+            const text = `Здравствуйте! Меня зовут ${name} (${phone}). ${msg}`;
+            const encodedText = encodeURIComponent(text);
+            
+            // Redirect directly to WhatsApp with pre-filled message
+            window.open(`https://wa.me/97226714089?text=${encodedText}`, '_blank');
+        });
+    </script>
+</body>
+</html>
